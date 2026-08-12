@@ -6,26 +6,20 @@
 %{
 #include <stdio.h>
 %}
-
 %token NUMBER
 %left '+'
 %left '*'
-
 %%
-
 expr : expr '+' expr
      | expr '*' expr
      | NUMBER
      ;
-
 %%
-
 int main()
 {
     yyparse();
     return 0;
 }
-
 int yyerror(char *s)
 {
     printf("Invalid expression\n");
@@ -39,20 +33,15 @@ int yyerror(char *s)
 %{
 #include <stdio.h>
 %}
-
 %token NUMBER
 %left '+'
 %left '*'
-
 %%
-
 expr : expr '+' expr   { $$ = $1 + $3; }
      | expr '*' expr   { $$ = $1 * $3; }
      | NUMBER          { $$ = $1; }
      ;
-
 %%
-
 int main()
 {
     yyparse();
@@ -95,30 +84,23 @@ Result:
 %{
 #include <stdio.h>
 %}
-
 %token NUMBER
 %left '+'
 %left '*'
-
 %%
-
 input : expr { printf("Result = %d\n", $1); }
       ;
-
 expr : expr '+' expr   { $$ = $1 + $3; }
      | expr '*' expr   { $$ = $1 * $3; }
      | NUMBER          { $$ = $1; }
      ;
-
 %%
-
 int main()
 {
     printf("Enter expression: ");
     yyparse();
     return 0;
 }
-
 int yyerror(char *s)
 {
     printf("Invalid expression\n");
