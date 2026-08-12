@@ -6,26 +6,20 @@
 %{
 #include <stdio.h>
 %}
-
 %token ID
 %left '+'
 %left '*'
-
 %%
-
 expr : expr '+' expr
      | expr '*' expr
      | ID
      ;
-
 %%
-
 int main()
 {
     yyparse();
     return 0;
 }
-
 int yyerror(char *s)
 {
     printf("Invalid expression\n");
@@ -40,14 +34,12 @@ int yyerror(char *s)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 struct Node
 {
     char value[10];
     struct Node *left;
     struct Node *right;
 };
-
 struct Node* createNode(char *value, struct Node *left, struct Node *right)
 {
     struct Node *newNode = malloc(sizeof(struct Node));
@@ -57,21 +49,16 @@ struct Node* createNode(char *value, struct Node *left, struct Node *right)
     return newNode;
 }
 %}
-
 %union
 {
     char *str;
     struct Node *node;
 }
-
 %token <str> ID
 %type <node> expr
-
 %left '+'
 %left '*'
-
 %%
-
 expr : expr '+' expr
        { $$ = createNode("+", $1, $3); }
      | expr '*' expr
@@ -79,9 +66,7 @@ expr : expr '+' expr
      | ID
        { $$ = createNode($1, NULL, NULL); }
      ;
-
 %%
-
 int main()
 {
     yyparse();
