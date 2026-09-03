@@ -1,3 +1,4 @@
+```lex
 %{
 #include <stdio.h>
 
@@ -5,9 +6,9 @@ int tags = 0;
 %}
 
 %%
-"<"[^>]*">"    { tags++; }
+"<"[^>]*">"     { tags++; }
+[ \t\n]+        ;
 .               ;
-\n              ;
 %%
 
 int main()
@@ -33,3 +34,4 @@ int yywrap()
 {
     return 1;
 }
+```
