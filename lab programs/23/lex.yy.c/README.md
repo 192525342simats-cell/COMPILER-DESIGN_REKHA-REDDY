@@ -1,11 +1,16 @@
+```lex
 %{
 #include <stdio.h>
+
 int line_no = 1;
 %}
 
 %%
-\n      { printf("%4d  %s", line_no++, yytext); }
-.       { printf("%s", yytext); }
+
+\n { printf("%4d %s", line_no++, yytext); }
+
+. { printf("%s", yytext); }
+
 %%
 
 int yywrap()
@@ -28,3 +33,4 @@ int main()
     fclose(yyin);
     return 0;
 }
+```
