@@ -1,3 +1,4 @@
+```lex
 %{
 #include <stdio.h>
 
@@ -7,13 +8,13 @@ FILE *output;
 
 %%
 
-"//".*                      { comment_count++; }
+"//".* { comment_count++; }
 
-"/*"([^*]|\*+[^*/])*\*+"/"  { comment_count++; }
+"/*"([^\*]|\*+[^\*/])*\*+"/" { comment_count++; }
 
-\n                          { fprintf(output, "\n"); }
+\n { fprintf(output, "\n"); }
 
-.                           { fprintf(output, "%s", yytext); }
+. { fprintf(output, "%s", yytext); }
 
 %%
 
@@ -50,3 +51,4 @@ int main()
 
     return 0;
 }
+```
