@@ -1,3 +1,4 @@
+```c
 #include<stdio.h>
 
 int main()
@@ -12,3 +13,5 @@ int main()
     printf("sum is %d",c);
 
     return 0;
+}
+```
