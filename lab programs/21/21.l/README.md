@@ -1,3 +1,4 @@
+```lex
 %{
 #include <stdio.h>
 
@@ -6,9 +7,13 @@ int consonants = 0;
 %}
 
 %%
-[aAeEiIoOuU]    { vowels++; }
-[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]    { consonants++; }
-.               ;
+
+[aAeEiIoOuU] { vowels++; }
+
+[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z] { consonants++; }
+
+. ;
+
 %%
 
 int main()
